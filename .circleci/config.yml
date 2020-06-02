@@ -1,0 +1,19 @@
+version: 2.1
+
+orbs:
+  win: circleci/windows@1.0.0
+
+jobs:
+ build:
+   executor:
+     name: win/vs2019
+     shell: powershell.exe
+   steps:
+     - checkout
+  #   - run: docker run --name aspnet_sample --rm -it -p 8000:80 mcr.microsoft.com/dotnet/framework/samples:aspnetapp
+  #   - run: docker run --name wincontainer mcr.microsoft.com/windows/nanoserver:1809
+     - run: docker build -t my-dotnet46-app .
+     - run: docker run my-dotnet46-app
+  #   - run: docker tag wincontainer:latest wincontainer:latest
+  #   - run: docker start wincontainer
+  #   - run: docker push brianoh1979/wincontainer:latest
