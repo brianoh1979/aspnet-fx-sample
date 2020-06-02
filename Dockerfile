@@ -10,7 +10,8 @@ COPY dotnetapp-4.6.2/dotnetapp-4.6.2/*.csproj ./dotnetapp/
 #RUN dotnet restore
 
 # copy everything else and build app
-COPY . .
+COPY dotnetapp-4.6.2/dotnetapp-4.6.2/*.config ./dotnetapp/
+COPY dotnetapp-4.6.2/dotnetapp-4.6.2/*.cs ./dotnetapp/
 WORKDIR /app/dotnetapp
 RUN dotnet build
 
@@ -20,9 +21,9 @@ RUN dotnet build
 #ENTRYPOINT ["dotnet", "test", "--logger:trx"]
 
 
-FROM build AS test
-WORKDIR /app/tests
-RUN dotnet test
+#FROM build AS test
+#WORKDIR /app/tests
+#RUN dotnet test
 
 
 #FROM build AS publish
