@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/dotnet/framework/sdk:4.8 AS build
+#FROM mcr.microsoft.com/dotnet/framework/sdk:4.8 AS build
+FROM microsoft/dotnet-framework:4.6.2
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
@@ -6,7 +7,7 @@ COPY dotnetapp-4.6.2/*.sln .
 COPY dotnetapp-4.6.2/dotnetapp-4.6.2/*.csproj ./dotnetapp/
 #COPY utils/*.csproj ./utils/
 #COPY tests/*.csproj ./tests/
-RUN dotnet restore
+#RUN dotnet restore
 
 # copy everything else and build app
 COPY . .
