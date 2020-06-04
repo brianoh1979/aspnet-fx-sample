@@ -1,16 +1,16 @@
 FROM mcr.microsoft.com/dotnet/framework/sdk:4.8 AS build
-WORKDIR /app
+#WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY dotnetapp-4.6.2/*.sln c:\\Users\\circleci\\project\\dotnetapp-4.6.2
-COPY dotnetapp-4.6.2/dotnetapp-4.6.2/*.csproj c:\\Users\\circleci\\project\\dotnetapp-4.6.2
+COPY dotnetapp-4.6.2/*.sln c:\\Users\\circleci\\project\\dotnetapp-4.6.2\\
+COPY dotnetapp-4.6.2/dotnetapp-4.6.2/*.csproj c:\\Users\\circleci\\project\\dotnetapp-4.6.2\\
 #COPY dotnetapp-4.6.2/dotnetapp-4.6.2/*.dll ./dotnetapp/
 
 # copy everything else and build app
-COPY dotnetapp-4.6.2/dotnetapp-4.6.2/*.config c:\\Users\\circleci\\project\\dotnetapp-4.6.2
-COPY dotnetapp-4.6.2/dotnetapp-4.6.2/*.cs c:\\Users\\circleci\\project\\dotnetapp-4.6.2
+COPY dotnetapp-4.6.2/dotnetapp-4.6.2/*.config c:\\Users\\circleci\\project\\dotnetapp-4.6.2\\
+COPY dotnetapp-4.6.2/dotnetapp-4.6.2/*.cs c:\\Users\\circleci\\project\\dotnetapp-4.6.2\\
 #WORKDIR /app/dotnetapp
-WORKDIR c:\\Users\\circleci\\project\\dotnetapp-4.6.2 
+WORKDIR c:\\Users\\circleci\\project\\dotnetapp-4.6.2\\ 
 #RUN dotnet build
 #RUN cd "C:\Users\circleci\project\dotnetapp-4.6.2" .
 RUN MSBuild.exe dotnetapp-4.6.2.sln /property:Configuration=Release
