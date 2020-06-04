@@ -7,6 +7,7 @@ jobs:
  build:
    executor:
      name: win/vs2019
+     size: "large"
      shell: powershell.exe
    steps:
      - checkout
