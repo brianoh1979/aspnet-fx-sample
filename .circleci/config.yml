@@ -17,8 +17,6 @@ jobs:
          shell: powershell.exe
          command: |
            docker info
- #          docker run mcr.microsoft.com/dotnet/framework/sdk:4.8
            docker run hello-world:nanoserver-1809
- #    - run: docker build -t my-dotnet46-app .
      - run: choco install visualstudio2019testagent
      - run: MSTest /testcontainer:hello-world-x64.dll
