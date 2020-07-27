@@ -10,6 +10,11 @@ jobs:
    steps:
      - checkout
  #    - run: systeminfo
+     - run: sudo apt-get update
+     - run: sudo apt install docker.io
+     - run: sudo systemctl start docker
+     - run: sudo systemctl enable docker
+     - run: docker --version
      - run: docker build .
  #    - run:
  #        name: "Check Docker"
