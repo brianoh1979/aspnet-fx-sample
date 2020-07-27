@@ -5,8 +5,10 @@ orbs:
 
 jobs:
  build:
-   docker:
-     - image: mcr.microsoft.com/windows/servercore:ltsc2019
+   executor:
+     name: win/default
+     size: "large"
+ #    shell: powershell.exe
    steps:
      - checkout
      - run: systeminfo
