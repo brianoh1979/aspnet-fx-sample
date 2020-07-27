@@ -6,15 +6,16 @@ orbs:
 jobs:
  build:
    docker:
-     - image: mcr.microsoft.com/dotnet/core/sdk:2.2
+     - image: mcr.microsoft.com/dotnet/core/sdk:3.1
    steps:
      - checkout
+     - setup_remote_docker
  #    - run: systeminfo
-     - run: apt-get update
-     - run: apt install sudo
-     - run: sudo apt install docker.io
-     - run: sudo systemctl start docker
-     - run: sudo systemctl enable docker
+ #    - run: apt-get update
+ #    - run: apt install sudo
+ #    - run: sudo apt install docker.io
+ #    - run: sudo systemctl start docker
+ #    - run: sudo systemctl enable docker
      - run: docker --version
      - run: docker build .
  #    - run:
