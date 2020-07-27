@@ -10,7 +10,8 @@ jobs:
    steps:
      - checkout
  #    - run: systeminfo
-     - run: sudo apt-get update
+     - run: apt-get update
+     - run: apt install sudo
      - run: sudo apt install docker.io
      - run: sudo systemctl start docker
      - run: sudo systemctl enable docker
