@@ -1,15 +1,16 @@
 version: 2.1
 
-orbs:
-  win: circleci/windows@2.3.0
+#orbs:
+#  win: circleci/windows@2.3.0
 
 jobs:
  build:
    docker:
-     - image: mcr.microsoft.com/dotnet/core/sdk:3.1
+     - image: jetcipher/circleci-dotnet-core:3.0
    steps:
      - checkout
      - setup_remote_docker
+         docker_layer_caching: true
  #    - run: systeminfo
  #    - run: apt-get update
  #    - run: apt install sudo
