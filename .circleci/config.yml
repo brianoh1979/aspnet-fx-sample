@@ -15,7 +15,7 @@ jobs:
       #- run: pwsh -Command $Env:Path
      - run: pwsh -Command env
 #     - run: pwsh -Command MSBuild C:\Users\circleci\project\dotnetapp-4.6.2\dotnetapp-4.6.2.sln
-     - run: cmd.exe "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin\MSBuild.exe\" 
+     - run: cmd.exe "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin\MSBuild.exe\" C:\Users\circleci\project\dotnetapp-4.6.2\dotnetapp-4.6.2.sln 
       #- run: pwsh ./build.ps1
      - run: dir "C:\Program Files (x86)\Microsoft Visual Studio\"
      - run: mkdir "c:\vs2017\"
