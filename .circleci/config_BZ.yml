@@ -1,0 +1,36 @@
+version: 2.1
+
+orbs:
+  win: circleci/windows@2.2.0
+
+jobs:
+ build:
+   executor: win/default
+
+   steps:
+     - checkout
+     - run: dotnet tool install --global PowerShell
+      #- run: pwsh -Command $Env:Path
+     - run: pwsh -Command env
+      #- run: pwsh ./build.ps1
+     - run: dir "C:\Program Files (x86)\Microsoft Visual Studio\"
+     - run: mkdir "c:\vs2017\"
+     - run: pwsh -Command { cmd /c vs_professional.exe --installPath "c:\vs2017\install" --quiet --wait --add "Microsoft.VisualStudio.Workload.NativeDesktop" }
+     - run: dir "c:\vs2017\"
+     - run: pwsh Get-EventLog -LogName Application -Newest 20
+      #- run: pwsh ./install.ps1
+     - run: dir "C:\Program Files (x86)\Microsoft Visual Studio\"
+     - run: dir "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin\"
+      
+      # - run: 7z x ./kiribati/src/BuildMeToBuildEnterpriseStudio/TiDev.zip -o/c
+      # - run: 7z x ./kiribati/src/BuildMeToBuildEnterpriseStudio/compiledbisonflex++.zip
+
+     - run: nuget restore kiribati\src\BiZZdesign-vs2017.sln
+     - run: MSBuild kiribati\src\GraphViz\GraphViz.vcxproj /t:Build /p:SolutionDir="kiribati\src\" /p:Configuration="Release" /p:Platform="win32"
+     - run: dir "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework"
+     - run: MSBuild /nodereuse:false kiribati\src\BuildMeToBuildEnterpriseStudio\BuildMeToBuildEnterpriseStudio.vcxproj /t:Build /p:SolutionDir="kiribati\src\" /p:Configuration="Release" /p:Platform="x64" /p:ZipDeployment=true /maxcpucount
+#     - setup_remote_docker:
+#         docker_layer_caching: true
+#     - run: docker --version
+#     - run: docker build .
+     
