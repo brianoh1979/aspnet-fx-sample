@@ -11,6 +11,12 @@ jobs:
  #    shell: powershell.exe
    steps:
      - checkout
+     - run: dotnet tool install --global PowerShell
+      #- run: pwsh -Command $Env:Path
+     - run: pwsh -Command env
+      #- run: pwsh ./build.ps1
+     - run: dir "C:\Program Files (x86)\Microsoft Visual Studio\"
+     - run: mkdir "c:\vs2017\"
      - run: systeminfo
      - run:
          name: "Check Docker"
@@ -20,5 +26,5 @@ jobs:
            docker run hello-world:nanoserver-1809
      - run: choco install visualstudio2019testagent
      - run: choco install MSTest.TestFramework --version 2.1.1 --source https://dotnet.myget.org/F/mstestv2/api/v2
-     - run: cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\TestAgent\Common7\IDE\"; .\MSTEST /testcontainer:C:\Users\circleci\project\hello-world-x86.dll 
+#     - run: cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\TestAgent\Common7\IDE\"; .\MSTEST /testcontainer:C:\Users\circleci\project\hello-world-x86.dll 
      
