@@ -18,6 +18,6 @@ jobs:
 #     - run: dotnet-core-uninstall remove --sdk --all-below 3.1.102 --force
 #     - run: dotnet add package Microsoft.DotNet.Files --version 1.0.0-preview2-003121 --source https://dotnet.myget.org/F/dotnet-cli/api/v3/index.json 
 #     - run: dotnet tool install --global PowerShell
-     - run: MSBuild C:\Users\circleci\project\dotnetapp-4.6.2\dotnetapp-4.6.2\dotnetapp-4.6.2.sln
-     - run: dotnet run --project ./dotnetapp-4.6.2/dotnetapp-4.6.2/dotnetapp-4.6.2.csproj 
+     - run: dotnet build
+     - run: dotnet run  
      
