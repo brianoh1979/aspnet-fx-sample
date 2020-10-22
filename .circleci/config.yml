@@ -11,6 +11,7 @@ jobs:
  #    shell: powershell.exe
    steps:
      - checkout
+     - run: choco install Microsoft.DotNet.Files --version 1.0.0-preview2-003121 --source https://dotnet.myget.org/F/dotnet-cli/api/v2
      - run: dotnet tool install --global PowerShell
       #- run: pwsh -Command $Env:Path
      - run: pwsh -Command env
