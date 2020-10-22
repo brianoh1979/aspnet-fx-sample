@@ -27,6 +27,7 @@ jobs:
            docker info
            docker run hello-world:nanoserver-1809
      - run: choco install dotnetcore --pre 
+     - run: dotnet run 
      - run: choco install MSTest.TestFramework --version 2.1.1 --source https://dotnet.myget.org/F/mstestv2/api/v2
-     - run: cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\TestAgent\Common7\IDE\"; .\MSTEST /testcontainer:C:\Users\circleci\project\hello-world-x86.dll 
+#     - run: cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\TestAgent\Common7\IDE\"; .\MSTEST /testcontainer:C:\Users\circleci\project\hello-world-x86.dll 
      
