@@ -11,8 +11,8 @@ jobs:
  #    shell: powershell.exe
    steps:
      - checkout
-     - run: dotnet tool install --global PowerShell
-     - run: pwsh ./RemoveCoreSDKs.ps1
+#     - run: dotnet tool install --global PowerShell
+#     - run: pwsh ./RemoveCoreSDKs.ps1
      - run: choco install dotnetcore --pre
 #     - run: choco install dotnet-core-uninstall 
 #     - run: dotnet-core-uninstall remove --sdk --all-below 3.1.102 --force
