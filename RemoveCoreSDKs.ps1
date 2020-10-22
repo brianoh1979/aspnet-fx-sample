@@ -1,4 +1,4 @@
-$app = Get-WmiObject -Class Win32_Product | Where-Object { 
+$app = Get-CimInstance -ClassName Win32_Product | Where-Object { 
     $_.Name -match "Microsoft .NET Core SDK" 
 }
 
