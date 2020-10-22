@@ -12,7 +12,6 @@ jobs:
    steps:
      - checkout
      - run: choco install dotnetcore --pre
-     - run: choco install Microsoft.DotNet.Files --version 1.0.0-preview2-003121 --source https://dotnet.myget.org/F/dotnet-cli/api/v2
 #     - run: choco install Microsoft.DotNet.Files --version 1.0.0-preview2-003121 --source https://dotnet.myget.org/F/dotnet-cli/api/v2
      - run: dotnet add package Microsoft.DotNet.Files --version 1.0.0-preview2-003121 --source https://dotnet.myget.org/F/dotnet-cli/api/v3/index.json 
      - run: dotnet tool install --global PowerShell
