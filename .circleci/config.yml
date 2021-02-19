@@ -23,6 +23,8 @@ jobs:
  #          dockerize -wait tcp://127.0.0.1:1433 -timeout 1m
  #          sleep 5
      - setup_remote_docker
+     - run: apt-get update
+     - run: apt install maven
      - run:
          name: Deployment Test
          command: mvn -B -f ./pom.xml clean install -V -U -Dacceptance.test.log.level=INFO -Dtycho.localArtifacts=ignore -DskipRestTests -Dacceptance.hds.type=memory -Dtest=ManualMatchSpec -Pacceptance,deployment-matching -s gresham-nexus-settings/ctc.settings.xml
