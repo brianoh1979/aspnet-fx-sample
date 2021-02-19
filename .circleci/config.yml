@@ -22,6 +22,6 @@ jobs:
          command: |
            dockerize -wait tcp://127.0.0.1:1433 -timeout 1m
            sleep 5
-     - run: sudo apt-get install telnet
+     - run: apt-get install telnet
      - run: sleep 1 | telnet 127.0.0.1 1433       
      
