@@ -19,5 +19,8 @@ jobs:
              sleep 1
            done
            echo Failed waiting for MSSQL && exit 1
-      - run: echo "Hello World"
+#      - run:
+#          name: Echo
+#          command: echo Hello world
+            
      
