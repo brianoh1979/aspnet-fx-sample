@@ -33,5 +33,5 @@ jobs:
  #          done
  #          echo Failed waiting for MSSQL && exit 1
      - run: sudo apt-get install telnet
-     - run: echo 'exit' | telnet 127.0.0.1 1433       
+     - run: sleep 1 | telnet 127.0.0.1 1433       
      
