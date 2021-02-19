@@ -5,13 +5,6 @@
 	<artifactId>com.brian.darwin.acceptance.matching.deployment</artifactId>
 	<packaging>pom</packaging>
 
-	<parent>
-		<relativePath>pom.xml</relativePath>
-		<groupId>com.brian</groupId>
-		<artifactId>com.brian.darwin.acceptance.matching.deployment</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-
 	<properties>
 		<maven.build.timestamp.format>yyMMddHHmmssSS</maven.build.timestamp.format>
 		<acceptance.uniqueid>${maven.build.timestamp}</acceptance.uniqueid>
