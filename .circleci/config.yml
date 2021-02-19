@@ -6,10 +6,11 @@ jobs:
    # Primary container image where all steps run.
     - image: circleci/node:latest
    # Secondary container image on common network.
-   # - image: mcr.microsoft.com/mssql/server:2019-latest 
+    - image: mcr.microsoft.com/mssql/server:2019-latest
+      environment:
+          - ACCEPT_EULA: "Y" 
    steps:
      - checkout
-     - run: sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=$SA_PASSWORD" -p 1433:1433 --name sql1 -h sql1 -d mcr.microsoft.com/mssql/server:2019-latest
      - run:
          name: Waiting for mssql to be ready
          command: |
