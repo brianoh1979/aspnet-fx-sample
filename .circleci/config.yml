@@ -4,7 +4,7 @@ jobs:
  build:
    docker:
    # Primary container image where all steps run.
-    - image: circleci/node:7.10-jessie-browsers
+    - image: circleci/node:latest
    # Secondary container image on common network.
     - image: mcr.microsoft.com/mssql/server:2019-latest 
    steps:
@@ -19,5 +19,4 @@ jobs:
              sleep 1
            done
            echo Failed waiting for MSSQL && exit 1
-      - run: echo "Hello World"
      
