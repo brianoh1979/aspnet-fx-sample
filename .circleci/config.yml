@@ -12,26 +12,16 @@ jobs:
           - SA_PASSWORD: Password1! 
    steps:
      - checkout
-#     - run:
-#          name: 'Install Dockerize'
-#          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-#          environment:
-#            DOCKERIZE_VERSION: v0.3.0
+     - run:
+          name: 'Install Dockerize'
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
      - run:
          name: 'Wait for MSSQL Docker'
          command: |
            dockerize -wait tcp://127.0.0.1:1433 -timeout 1m
            sleep 5
- #    - run:
- #        name: Waiting for mssql to be ready
- #        command: |
- #          for i in `seq 1 10`;
- #          do
- #            nc -z localhost 1433 && echo Success && exit 0
- #            echo -n .
- #            sleep 1
- #          done
- #          echo Failed waiting for MSSQL && exit 1
      - run: sudo apt-get install telnet
      - run: sleep 1 | telnet 127.0.0.1 1433       
      
