@@ -6,23 +6,27 @@ jobs:
    # Primary container image where all steps run.
     - image: brianoh1979/nodejs-circleci:latest
    # Secondary container image on common network.
-    - image: mcr.microsoft.com/mssql/server:2019-latest
-      environment:
-          - ACCEPT_EULA: "Y"
-          - SA_PASSWORD: Password1! 
+ #   - image: mcr.microsoft.com/mssql/server:2019-latest
+ #     environment:
+ #         - ACCEPT_EULA: "Y"
+ #         - SA_PASSWORD: Password1! 
    steps:
      - checkout
+ #    - run:
+ #         name: 'Install Dockerize'
+ #         command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+ #         environment:
+ #           DOCKERIZE_VERSION: v0.3.0
+ #    - run:
+ #        name: 'Wait for MSSQL Docker'
+ #        command: |
+ #          dockerize -wait tcp://127.0.0.1:1433 -timeout 1m
+ #          sleep 5
+     - setup_remote_docker
      - run:
-          name: 'Install Dockerize'
-          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-          environment:
-            DOCKERIZE_VERSION: v0.3.0
-     - run:
-         name: 'Wait for MSSQL Docker'
-         command: |
-           dockerize -wait tcp://127.0.0.1:1433 -timeout 1m
-           sleep 5
-     - run: apt-get update
-     - run: apt-get install telnet
-     - run: sleep 1 | telnet 127.0.0.1 1433       
+         name: Deployment Test
+         command: mvn -B -f ./pom.xml clean install -V -U -Dacceptance.test.log.level=INFO -Dtycho.localArtifacts=ignore -DskipRestTests -Dacceptance.hds.type=memory -Dtest=ManualMatchSpec -Pacceptance,deployment-matching -s gresham-nexus-settings/ctc.settings.xml
+ #    - run: apt-get update
+ #    - run: apt-get install telnet
+ #    - run: sleep 1 | telnet 127.0.0.1 1433       
      
