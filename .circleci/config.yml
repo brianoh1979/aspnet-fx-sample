@@ -7,26 +7,17 @@ jobs:
     - image: circleci/node:7.10-jessie-browsers
    # Secondary container image on common network.
     - image: mcr.microsoft.com/mssql/server:2019-latest 
- #    shell: powershell.exe
    steps:
      - checkout
-#     - run: dotnet tool install --global PowerShell
-#     - run: pwsh ./RemoveCoreSDKs.ps1
      - run:
-          name: Waiting for mssql to be ready
-          command: |
-            for i in `seq 1 10`;
-            do
-              nc -z localhost 1433 && echo Success && exit 0
-              echo -n .
-              sleep 1
-            done
-            echo Failed waiting for MSSQL && exit 1
-      - run: echo "Hello World!"
-#     - run: choco install dotnet-core-uninstall 
-#     - run: dotnet-core-uninstall remove --sdk --all-below 3.1.102 --force
-#     - run: dotnet add package Microsoft.DotNet.Files --version 1.0.0-preview2-003121 --source https://dotnet.myget.org/F/dotnet-cli/api/v3/index.json 
-#     - run: dotnet tool install --global PowerShell
-#     - run: dotnet build
-#     - run: dotnet run  
+         name: Waiting for mssql to be ready
+         command: |
+           for i in `seq 1 10`;
+           do
+             nc -z localhost 1433 && echo Success && exit 0
+             echo -n .
+             sleep 1
+           done
+           echo Failed waiting for MSSQL && exit 1
+      - run: echo "Hello World"
      
