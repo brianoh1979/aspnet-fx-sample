@@ -4,7 +4,7 @@ jobs:
  build:
    docker:
    # Primary container image where all steps run.
-    - image: circleci/node:latest
+    - image: brianoh1979/nodejs-circleci:latest
    # Secondary container image on common network.
     - image: mcr.microsoft.com/mssql/server:2019-latest
       environment:
